@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /*
- * ¾Æ·¡ÀÇ System.IO.Ports¸¦ »ç¿ëÇÏ±â À§ÇØ¼­´Â
- * Unity Editor > Edit > Project Settings > Player > Other Settings > Configuration > Api Compatibility LevelÀ»
- * .NET 4.x·Î ¼³Á¤ÇÏ°í Unity Editor¸¦ ´Ù½Ã ½ÃÀÛÇØ¾ß ÇÔ * 
+ * ì•„ë˜ì˜ System.IO.Portsë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œëŠ”
+ * Unity Editor > Edit > Project Settings > Player > Other Settings > Configuration > Api Compatibility Levelì„
+ * .NET 4.xë¡œ ì„¤ì •í•˜ê³  Unity Editorë¥¼ ë‹¤ì‹œ ì‹œì‘í•´ì•¼ í•¨ * 
  */
 using System.IO.Ports;
 
-using System; // catch exception Ã³¸®¸¦ À§ÇØ »ç¿ë
+using System; // catch exception ì²˜ë¦¬ë¥¼ ìœ„í•´ ì‚¬ìš©
 
 /*
 Arduino Code
@@ -32,22 +32,22 @@ void loop() {
 public class Serial_Read_Control : MonoBehaviour
 {
     /// <summary>
-    /// ½Ã¸®¾ó Åë½ÅÀ» ´ã´çÇÏ´Â arduino °´Ã¼ »ı¼º
+    /// ì‹œë¦¬ì–¼ í†µì‹ ì„ ë‹´ë‹¹í•˜ëŠ” arduino ê°ì²´ ìƒì„±
     /// </summary>
     SerialPort arduino;
 
     /// <summary>
-    /// ½Ã¸®¾ó Æ÷Æ®
+    /// ì‹œë¦¬ì–¼ í¬íŠ¸
     /// </summary>
     public string portName = "COM5";
 
     /// <summary>
-    /// ¾ÆµÎÀÌ³ë°¡ º¸³»´Â µ¥ÀÌÅÍ¸¦ ÀúÀåÇÏ´Â sting º¯¼ö
+    /// ì•„ë‘ì´ë…¸ê°€ ë³´ë‚´ëŠ” ë°ì´í„°ë¥¼ ì €ì¥í•˜ëŠ” sting ë³€ìˆ˜
     /// </summary>
     public string serialIn;
 
     /// <summary>
-    /// ¾ÆµÎÀÌ³ë°¡ ¼Û½ÅÇÏ´Â µ¥ÀÌÅÍÀÇ ¼ö
+    /// ì•„ë‘ì´ë…¸ê°€ ì†¡ì‹ í•˜ëŠ” ë°ì´í„°ì˜ ìˆ˜
     /// </summary>
     public int dataCount = 2;
 
@@ -57,29 +57,29 @@ public class Serial_Read_Control : MonoBehaviour
     void Start()
     {
         ///
-        // PC¿¡ È°¼ºÈ­µÈ ½Ã¸®¾ó Æ÷Æ®ÀÇ ¸ñ·Ï ÃßÃâ
+        // PCì— í™œì„±í™”ëœ ì‹œë¦¬ì–¼ í¬íŠ¸ì˜ ëª©ë¡ ì¶”ì¶œ
         ///
         string[] ports = SerialPort.GetPortNames();
 
         ///
-        // ports ¹è¿­ ¾È¿¡ ÀÖ´Â °¢ ¿ä¼Ò(°¡·É, port)¸¦ Ãâ·Â
+        // ports ë°°ì—´ ì•ˆì— ìˆëŠ” ê° ìš”ì†Œ(ê°€ë ¹, port)ë¥¼ ì¶œë ¥
         foreach (string port in ports)
         {
             print(port);
         }
 
         ///
-        // arduino °´Ã¼¸¦ Æ÷Æ® ÀÌ¸§, Åë½Å ¼Óµµ¿¡ ¸ÂÃç ÃÊ±âÈ­
+        // arduino ê°ì²´ë¥¼ í¬íŠ¸ ì´ë¦„, í†µì‹  ì†ë„ì— ë§ì¶° ì´ˆê¸°í™”
         ///
         arduino = new SerialPort(portName.ToString(), 9600);
 
         ///
-        // timeout ¼³Á¤
+        // timeout ì„¤ì •
         ///
-        arduino.ReadTimeout = 100; //0.1ÃÊ
+        arduino.ReadTimeout = 100; //0.1ì´ˆ
 
         ///
-        // arduino Æ÷Æ® °³¹æ
+        // arduino í¬íŠ¸ ê°œë°©
         ///
         arduino.Open();
     }
